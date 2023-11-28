@@ -1,0 +1,26 @@
+name: RPM Build
+# Ported from scitokens-cpp
+
+on:
+  pull_request:
+    branches: 
+      - main
+      - test-rpm-build
+  push:
+    branches: 
+      - main
+      - test-rpm-build
+
+jobs:
+  build-rpm:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: recursive
+
+    # Custom rpm building from Derek to build RPM
+    - uses: djw8605/docker-mock-rpmbuilder@master
+      with:
+        spec-file: rpm/xrootd-s3-http.spec
+        mock-config: epel-7-x86_64

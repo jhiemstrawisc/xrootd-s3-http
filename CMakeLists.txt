@@ -11,6 +11,8 @@ find_package( CURL REQUIRED )
 include (FindPkgConfig)
 pkg_check_modules(LIBCRYPTO REQUIRED libcrypto)
 
+
+
 if(NOT XROOTD_PLUGIN_VERSION)
   exec_program(${XROOTD_BIN}/xrootd-config ARGS "--plugin-version" OUTPUT_VARIABLE XROOTD_PLUGIN_VERSION RETURN_VALUE RETVAR)
   set(XROOTD_PLUGIN_VERSION ${XROOTD_PLUGIN_VERSION} CACHE INTERNAL "")

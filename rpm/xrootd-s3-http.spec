@@ -1,5 +1,5 @@
 Name: xrootd-s3-http
-Version: 0.0.2
+Version: 0.1.1
 Release: 1%{?dist}
 Summary: S3/HTTP filesystem plugins for xrootd
 

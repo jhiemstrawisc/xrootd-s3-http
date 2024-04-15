@@ -15,14 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: build RPM package
-        id: rpm
-        uses: naveenrajm7/rpmbuild@master
-        with:
-          spec_file: "rpm/xrootd-s3-http.spec"
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v1.0.0
-        with:
-          name: Binary RPM
-          path: ${{ steps.rpm.outputs.rpm_dir_path }}
+      # Custom rpm building from Derek to build RPM
+      - uses: djw8605/docker-mock-rpmbuilder@master
+      with:
+        spec-file: rpm/scitokens-cpp.spec
+        mock-config: epel-9-x86_64

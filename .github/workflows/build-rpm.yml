@@ -18,6 +18,6 @@ jobs:
       # Custom rpm building from Derek to build RPM
       - uses: djw8605/docker-mock-rpmbuilder@master
         with:
-          spec-file: rpm/scitokens-cpp.spec
+          spec-file: rpm/xrootd-s3-http.spec
           mock-config: epel-9-x86_64
           

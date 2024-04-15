@@ -7,8 +7,7 @@ Group: System Environment/Daemons
 License: BSD
 # Generated from:
 # git archive v%{version} --prefix=xrootd-s3-http-%{version}/ | gzip -7 > ~/rpmbuild/SOURCES/xrootd-s3-http-%{version}.tar.gz
-URL: https://github.com/pelicanplatform/xrootd-s3-http
-Source0: %{name}-%{version}.tar.gz
+Source0: https://github.com/pelicanplatform/xrootd-s3-http/archive/refs/tags/v%{version}.tar.gz
 
 %define xrootd_current_major 5
 %define xrootd_current_minor 5
@@ -33,13 +32,13 @@ Requires: xrootd-server <  1:%{xrootd_next_major}.0.0-1
 %prep
 %setup -q
 
+
 %build
-%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo .
-make VERBOSE=1 %{?_smp_mflags}
+%cmake3
+%cmake3_build
 
 %install
-rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+%cmake3_install
 
 %files
 %defattr(-,root,root,-)

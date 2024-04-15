@@ -3,9 +3,11 @@ on:
     pull_request:
       branches: 
         - main
+        - rpm-builder-action
     push:
       branches: 
         - main
+        - rpm-builder-action
 
 jobs:
     build:

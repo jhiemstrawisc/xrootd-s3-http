@@ -1,28 +1,28 @@
 name: RPM Build
 on:
-    pull_request:
-      branches: 
-        - main
-        - rpm-builder-action
-    push:
-      branches: 
-        - main
-        - rpm-builder-action
+  pull_request:
+    branches: 
+      - main
+      - rpm-builder-action
+  push:
+    branches: 
+      - main
+      - rpm-builder-action
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
-    
-        - name: build RPM package
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: build RPM package
         id: rpm
         uses: naveenrajm7/rpmbuild@master
         with:
-            spec_file: "rpm/xrootd-s3-http.spec"
+          spec_file: "rpm/xrootd-s3-http.spec"
 
-        - name: Upload artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
         with:
-            name: Binary RPM
-            path: ${{ steps.rpm.outputs.rpm_dir_path }}
+          name: Binary RPM
+          path: ${{ steps.rpm.outputs.rpm_dir_path }}
